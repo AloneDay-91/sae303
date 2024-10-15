@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/assets/css/app.css">
-    <script src="/assets/js/app.js" ></script>
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <script src="../assets/js/app.js" ></script>
 
     <!--CDN-->
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
