@@ -4,7 +4,12 @@ require_once 'components/header.php';
 <div>
     <!-- Anim voiture section -->
     <div id="home" class="container home">
-        anim voiture
+        <div class="circle"></div>
+        <div class="animtxt">
+        <div class="titleCont"><div class="title">Votre condu</div><svg class="lightning" xmlns="http://www.w3.org/2000/svg" width="109" height="80px" viewBox="0 0 89 129" fill="none">
+                    <path d="M0 74.4231L56.6364 0L44.5 54.5769H89L32.3636 129L44.5 74.4231H0Z" fill="#90FF00" /></svg
+            ><div class="title">te,</div></div><br><div class="title">votre planète.</div>
+        </div>
     </div>
     <!-- Title section -->
     <div id="title" class="container title">

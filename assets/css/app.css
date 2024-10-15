@@ -4,14 +4,14 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(90deg, rgba(3, 51, 54, 0.00) 0%, rgba(14, 121, 128, 0.16) 100%), #011415;
+    background: #011415;
     scroll-behavior: smooth;
 }
 
 .container {
-    max-width: 1200px;
+    /*max-width: 1200px;*/
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
     height: 100vh; /* Hauteur de la fenêtre */
     display: flex; /* Flexbox pour un meilleur alignement */
     align-items: center; /* Centrer verticalement */
@@ -26,6 +26,78 @@ html, body {
     text-transform: uppercase;
     color: #90FF00;
     transform: translateY(20px);
+}
+.home{
+    overflow: hidden;
+    margin: 0;
+    justify-content: flex-start;
+}
+.circle{
+    width: 1600px;
+    height: 100vh;
+    border-radius: 9999px;
+    background: radial-gradient(107.84% 107.84% at 24.11% 90.68%, rgba(3, 51, 54, 0.00) 40%, #033336 90%);
+    animation: animationStart 0.8s ease-in-out forwards 1s;
+    transform: translateX(-120%);
+    position: fixed;
+    /*z-index: -10;*/
+}
+
+@keyframes animationStart {
+    0% {
+        transform: translateX(-120%);
+    }
+    100% {
+        transform: translateX(-45%);
+    }
+}
+
+.animtxt{
+    width: 550px;
+    max-width: 550px;
+}
+
+.lightning{
+    padding-bottom: 10px;
+    transform: translate(-900%, 600%);
+    animation: lightning 0.6s ease-in-out forwards 0.3s;
+}
+
+@keyframes lightning {
+    0% {
+        transform: translate(-900%, 600%);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.title{
+    color: #90FF00;
+    font-family: Inter;
+    font-size: 5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    width: 100%;
+    transform: translateX(-250%);
+    animation: textAnim 0.8s ease-in-out forwards 1s;
+}
+
+.titleCont{
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+@keyframes textAnim {
+    0% {
+        transform: translateX(-250%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 
 .histoire {
