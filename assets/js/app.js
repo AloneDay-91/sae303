@@ -239,6 +239,26 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+
+        // ajouter ou supprimer une ligne de données dans le graphique (bornes par marques)
+        document.getElementById('addData').addEventListener('click', () => {
+            if (displayedDataCount < labels.length) {
+                displayedDataCount++;
+                chart.data.labels = labels.slice(0, displayedDataCount);
+                chart.data.datasets[0].data = currentData.slice(0, displayedDataCount);
+                chart.update();
+            }
+        });
+
+        document.getElementById('removeData').addEventListener('click', () => {
+            if (displayedDataCount > 1) {
+                displayedDataCount--;
+                chart.data.labels = labels.slice(0, displayedDataCount);
+                chart.data.datasets[0].data = currentData.slice(0, displayedDataCount);
+                chart.update();
+            }
+        });
+
         function createChart2(jsonData) {
             labels = jsonData.map(item => item.nom_enseigne);
             dataEnseigne = jsonData.map(item => item["CountEnseigne"]);
@@ -294,6 +314,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+
+        // ajouter ou supprimer une ligne de données dans le graphique
+        document.getElementById('addDataStation').addEventListener('click', () => {
+            if (displayedDataCount < labels.length) {
+                displayedDataCount++;
+                chart2.data.labels = labels.slice(0, displayedDataCount);
+                chart2.data.datasets[0].data = dataEnseigne.slice(0, displayedDataCount);
+                chart2.update();
+            }
+        });
+
+        document.getElementById('removeDataStation').addEventListener('click', () => {
+            if (displayedDataCount > 1) {
+                displayedDataCount--;
+                chart2.data.labels = labels.slice(0, displayedDataCount);
+                chart2.data.datasets[0].data = dataEnseigne.slice(0, displayedDataCount);
+                chart2.update();
+            }
+        });
     }
 
     const width = 850, height = 650;
@@ -322,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const getColor = (index) => colors[index % colors.length];
 
 // Initialisation de l'année par défaut
-    var currentYear = 2011;
+    var currentYear = 2020;
 
 // Chargement simultané des fichiers GeoJSON et JSON
     Promise.all([
@@ -424,78 +463,107 @@ document.addEventListener('DOMContentLoaded', () => {
         .attr("class", "map-tooltip")
         .style("opacity", 0);
 
-    // ChartBar
-    const ctx3 = document.getElementById('chartBar');
 
-    let chart3;
-    let currentData3 = [];
-    let labels3 = [];
-    let displayedDataCount3 = 8;
 
-    // Charger les données JSON et initialiser les graphiques
-    fetch('/assets/datas/nbVehicRegions.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
+
+
+
+    // Charger les données depuis nbVehicRegions.json
+    fetch('assets/datas/nbVehicRegions.json')
+        .then(response => response.json())
+        .then(jsonData => {
+            // Extraire les années disponibles
+            const years = Object.keys(jsonData.Feuil1[0]).filter(key => key !== 'regions');
+            let currentYearIndex = years.indexOf('2020');  // Initialiser l'année courante à 2011
+
+            // Extraire les régions
+            const regions = jsonData.Feuil1.map(item => item.regions);
+
+            // Fonction pour mettre à jour le graphique et le nombre total de véhicules
+            function updateChart(yearIndex) {
+                const year = years[yearIndex];
+                const dataForYear = jsonData.Feuil1.map(item => item[year]);
+
+                // Mise à jour du graphique
+                myChart.data.datasets[0].data = dataForYear;  // Mettre à jour les données du graphique
+                myChart.data.datasets[0].label = `Nombre de véhicules en ${year}`;  // Mettre à jour le label
+                myChart.update();  // Redessiner le graphique
+
+                // Mise à jour du nombre total de véhicules pour l'année
+                const totalVehicles = dataForYear.reduce((sum, num) => sum + Number(num), 0);
+                document.getElementById('totalVehicules').textContent = totalVehicles.toLocaleString();  // Formatage du nombre avec des virgules
+
+                // Mettre à jour l'affichage de l'année actuelle
+                document.getElementById('currentYear').textContent = year;
             }
-            return response.json();
-        })
 
-    function createChart3(jsonData) {
-        labels3 = jsonData.map(item => item.regions);
-        currentData3 = jsonData.map(item => item["regions"]);
-
-        chart3 = new Chart(ctx3, {
-            type: 'bar',
-            data: {
-                labels: labels3.slice(0, displayedDataCount3),
-                datasets: [{
-                    label: 'Véhicules par types',
-                    data: currentData3.slice(0, displayedDataCount3),
-                    borderWidth: 1,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
-                    ],
-                    fill: true,
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    datalabels: {
-                        color: '#fff',
-                        formatter: (value, ctx) => {
-                            let sum = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-                            let percentage = (value * 100 / sum).toFixed(2) + "%";
-                            return percentage;
+            // Initialisation du graphique
+            const ctx = document.getElementById('myChart3').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: regions,  // Affichage des régions sur l'axe Y
+                    datasets: [{
+                        label: `Nombre de véhicules en ${years[currentYearIndex]}`,
+                        data: jsonData.Feuil1.map(item => item[years[currentYearIndex]]),
+                        backgroundColor: 'rgba(144, 250, 0, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: {
+                                display: false,
+                            },
+                            ticks: {
+                                display: false,
+                            }
                         },
-                        anchor: 'center',
-                        align: 'center',
-                        font: {
-                            weight: 'bold',
-                            size: 16
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 8,
+                                    family: 'Arial',
+                                    style: 'italic'
+                                },
+                                color: '#fff'
+                            }
                         }
                     },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
                 }
-            }
-        });
-    }
+            });
+
+            // Mettre à jour les données initiales pour 2011
+            updateChart(currentYearIndex);
+
+            // Gestion des boutons pour changer d'année
+            document.getElementById('btnMinus').addEventListener('click', () => {
+                if (currentYearIndex > 0) {
+                    currentYearIndex--;
+                    updateChart(currentYearIndex);
+                }
+            });
+
+            document.getElementById('btnPlus').addEventListener('click', () => {
+                if (currentYearIndex < years.length - 1) {
+                    currentYearIndex++;
+                    updateChart(currentYearIndex);
+                }
+            });
+        })
+        .catch(error => console.error('Erreur lors du chargement des données :', error));
 
     initChart();
     initGlobe();

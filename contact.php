@@ -2,7 +2,7 @@
 require_once 'components/header.php';
 ?>
 
-<div data-barba="container" data-barba-namespace="contact">
+<div>
     <!-- Contact section -->
     <div id="contact" class="container title animate-this">
         <h2>Nos Coordonnées</h2>

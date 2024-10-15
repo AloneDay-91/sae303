@@ -90,7 +90,7 @@ backdrop-filter: blur(27px); padding: 10px; border-radius: 30px; display: flex; 
                 </div>
                 <p style="color: rgb(255,255,255,60%)">Par région</p>
                 <div style="width: 100%;">
-                    <canvas id="chartBar"></canvas>
+                    <canvas id="myChart3"></canvas>
                 </div>
                 <script>
 
