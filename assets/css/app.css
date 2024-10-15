@@ -37,10 +37,10 @@ html, body {
     height: 100vh;
     border-radius: 9999px;
     background: radial-gradient(107.84% 107.84% at 24.11% 90.68%, rgba(3, 51, 54, 0.00) 40%, #033336 90%);
-    animation: animationStart 0.8s ease-in-out forwards 1s;
+    animation: animationStart 0.8s ease-in-out forwards 1s, animationSuite 0.8s ease-in-out forwards 2.5s ;
     transform: translateX(-120%);
     position: fixed;
-    /*z-index: -10;*/
+    /*z-index: -1;*/
 }
 
 @keyframes animationStart {
@@ -48,7 +48,17 @@ html, body {
         transform: translateX(-120%);
     }
     100% {
-        transform: translateX(-45%);
+        transform: translateX(-50%);
+    }
+}
+@keyframes animationSuite {
+    0% {
+        transform: translateX(-50%);
+        scale: 1;
+    }
+    100% {
+        transform: translateX(0%);
+        scale: 1.8;
     }
 }
 
