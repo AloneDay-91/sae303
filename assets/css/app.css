@@ -1,0 +1,531 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(90deg, rgba(3, 51, 54, 0.00) 0%, rgba(14, 121, 128, 0.16) 100%), #011415;
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100vh; /* Hauteur de la fenêtre */
+    display: flex; /* Flexbox pour un meilleur alignement */
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
+    color: #ffffff; /* Couleur du texte, assure que c'est lisible sur le fond sombre */
+}
+
+.container.title {
+    font-size: 3rem; /* Taille de la police */
+    font-weight: 700; /* Gras */
+    margin-bottom: 20px; /* Marge en bas */
+    text-transform: uppercase;
+    color: #90FF00;
+    transform: translateY(20px);
+}
+
+.histoire {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 100vh;
+}
+
+.data1 {
+    background-image: url("/assets/img/background.svg"); /* Image de fond */
+    background-size: cover; /* Taille de l'image */
+    background-position: center; /* Position de l'image */
+    background-repeat: no-repeat; /* Répétition de l'image */
+    width: 100%; /* Largeur de la section */
+    height: 100vh; /* Hauteur de la section */
+    display: flex; /* Flexbox pour un meilleur alignement */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    color: white; /* Couleur du texte */
+}
+
+.data2 {
+    width: 100%; /* Largeur de la section */
+    height: 100vh; /* Hauteur de la section */
+    display: flex; /* Flexbox pour un meilleur alignement */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    color: white; /* Couleur du texte */
+}
+
+#map {
+    display: flex; /* Flexbox pour centrer le contenu */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+}
+
+.data3 {
+    background-image: url("assets/img/background.svg"); /* Image de fond */
+    background-size: cover; /* Taille de l'image */
+    background-position: center; /* Position de l'image */
+    background-repeat: no-repeat; /* Répétition de l'image */
+    width: 100%; /* Largeur de la section */
+    height: 100vh; /* Hauteur de la section */
+    display: flex; /* Flexbox pour un meilleur alignement */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    color: white; /* Couleur du texte */
+}
+
+.data4 {
+    width: 100%; /* Largeur de la section */
+    height: 100vh; /* Hauteur de la section */
+    display: flex; /* Flexbox pour un meilleur alignement */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    color: white; /* Couleur du texte */
+}
+
+.data5 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100vh; /* Hauteur de la fenêtre */
+    color: #ffffff;
+}
+
+
+.data6 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative; /* Assure que l'élément parent a un contexte de positionnement */
+}
+
+.data6 #globeViz {
+    position: absolute;
+    left: -50%; /* Décale le globe de 25% à gauche pour le rendre à moitié visible */
+    width: 150%; /* Augmente la taille pour que le globe dépasse à gauche */
+    height: 100%; /* S'assure que le globe occupe toute la hauteur */
+}
+
+
+.mapbox {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    overflow: hidden; /* Cache les éléments qui dépassent */
+}
+
+.mapbox iframe {
+    width: 100%;
+    height: 800px;
+    border: none; /* Supprime la bordure de l'iframe */
+    border-radius: 30px;
+    margin: 0 50px;
+}
+
+footer {
+    max-width: 1200px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid white;
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+}
+
+footer a:hover {
+    border-bottom: 1px solid #90FF00;
+    color: #90FF00;
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+}
+
+.data-1-count {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    padding: 0 10%;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.line {
+    max-width: 80%;
+    width: 100%; /* Augmentation de la largeur pour qu'elle commence "déjà sortie" */
+    height: 100px;
+    margin: 0 0 10px 0;
+    bottom: 50px;
+    left: -200px;  /* Positionner légèrement en dehors de l'écran au début */
+    position: absolute;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+/* Pseudo-élément pour la barre avec opacité */
+.line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #90FF00;
+    opacity: 0.3;  /* Contrôle l'opacité ici */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 0;  /* Derrière le contenu */
+}
+
+.line-3 {
+    max-width: 100%;
+    width: 100%; /* Augmentation de la largeur pour qu'elle commence "déjà sortie" */
+    height: 100px;
+    margin: 0 0 10px 0;
+    bottom: 100px;
+    left: -200px;  /* Positionner légèrement en dehors de l'écran au début */
+    position: absolute;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+/* Pseudo-élément pour la barre avec opacité */
+.line-3::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #90FF00;
+    opacity: 0.3;  /* Contrôle l'opacité ici */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 0;  /* Derrière le contenu */
+}
+
+/* Le contenu, avec une opacité indépendante */
+.content-bar-gsap {
+    position: absolute;
+    right: 50px;
+    top: 10px;
+    z-index: 1;  /* Au-dessus de la ligne (z-index plus élevé) */
+    margin: 0;
+    padding: 0;
+    color: #90FF00;
+}
+
+.content-bar-gsap .scroll-number {
+    opacity: 50%;
+}
+
+.content-bar-gsap span {
+    opacity: 30%;
+}
+
+.content-bar-gsap-cars {
+    position: absolute;
+    right: 50px;
+    top: -90px;
+    z-index: 1;  /* Au-dessus de la ligne (z-index plus élevé) */
+    margin: 0;
+    padding: 0;
+    color: #90FF00;
+}
+
+.content-bar-gsap-cars .scroll-number-cars {
+    opacity: 50%;
+}
+
+.content-bar-gsap-cars span {
+    opacity: 30%;
+}
+
+.scroll-number {
+    font-size: 25px;  /* Taille fixe pour le numéro */
+    z-index: 1;  /* Le texte au-dessus de la barre */
+}
+
+.scroll-number-cars {
+    font-size: 25px;  /* Taille fixe pour le numéro */
+    z-index: 1;  /* Le texte au-dessus de la barre */
+}
+
+.content-bar-gsap span {
+    font-size: 15px;  /* Taille fixe pour le texte complémentaire */
+}
+
+/* Assurer que le texte ne change pas de taille pendant le scroll */
+.line .scroll-number,
+.line .content-bar-gsap span {
+    transform: none;  /* Aucune transformation lors de l'animation de la ligne */
+}
+
+.count-scroll {
+    font-size: 80px;
+    font-weight: 200;
+    color: #fff;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.count-scroll div {
+    font-size: 80px;
+    font-weight: 700;
+    color: #90FF00;
+    margin-left: 10px;
+}
+
+.year-scroll {
+    overflow: hidden;
+    height: 100px; /* hauteur visible du compteur */
+}
+
+.scroll-year {
+    font-size: 40px;
+    font-weight: bold;
+    opacity: 0.5;
+    transform: translateY(100%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.scroll-year.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+#hdp {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 1000;
+    background: rgba(139, 139, 139, 0.25);
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#hdp div {
+    position: absolute;
+    left: 0;
+    margin: -18px;
+}
+
+#hdp div svg {
+    border-radius: 999px;
+    background: #011415;
+    padding: 5px 10px;
+}
+
+#data5 iframe {
+    width: 100%;
+    height: 100vh;
+    border: none;
+}
+
+h3 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 100px;
+}
+
+#data5 .div-data5 {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+}
+
+#data5 div .text-data5 {
+    width: 50%;
+}
+
+#data5 div .text-data5 p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.bold-green-title {
+    color: #90FF00;
+}
+
+.bold-green-text {
+    color: #90FF00;
+}
+
+#globeViz {
+    width: 100%;
+    height: 100vh;
+    border: none;
+    background: transparent;
+}
+
+.info-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin: 0 auto;
+    padding: 150px;
+    height: 100vh; /* Hauteur de la fenêtre */
+}
+
+.info-contact-item {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    width: 100%;
+    margin: 50px 0;
+}
+
+.info-contact-item h3 {
+    font-size: 3.5rem;
+    font-weight: 500;
+    color: #90FF00;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.info-contact-item p {
+    font-size: 2.5rem;
+    font-weight: 200;
+    color: #fff;
+    margin: 0;
+}
+
+.block-link-contact {
+    margin: 20px 0 50px 0;
+}
+
+.block-link-contact a {
+    color: #000;
+    background: #FFF;
+    padding: 10px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+    display: inline-flex;
+    font-size: 1.2rem;
+}
+
+.block-link-contact a:hover {
+    background: #90FF00;
+    color: #000;
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+}
+
+.badge-vert {
+    background: #90FF00;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    margin-left: 10px;
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+}
+
+.block-link-contact a:hover .badge-vert {
+    background: #011415;
+    color: #90FF00;
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+}
+
+.info-contact-item hr {
+    border: 1px solid rgba(144, 255, 0, 0.12);
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 999px;
+}
+
+.block-data4 {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.block-data4-chart1, .block-data4-chart2 {
+    width: 100%;
+}
+
+.block-data4-chart1 canvas, .block-data4-chart2 canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.data1, .data2, .data3, .data4, .data5, .data6 {
+    margin: 200px auto;
+}
+
+.map-tooltip {
+    position: absolute;
+    text-align: center;
+    z-index: 1000;
+    background: rgba(139, 139, 139, 0.25);
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 999px;
+    pointer-events: none;
+    font-size: 11px;
+}
+
+
+
+
+
+
+
+html.lenis, html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
