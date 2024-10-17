@@ -332,8 +332,135 @@ backdrop-filter: blur(27px); padding: 10px; border-radius: 30px; display: flex; 
     </div>
 
     <div id="data3" class="data3">
-        <p>Histoire data3</p>
+        <div class="data3-bg">
+            <div class="content-data3">
+                <div class="data3-texte">
+                    <h3>Nombre <span class="bold-green-title">d’aires d’autoroutes</span> équipées par des bornes électriques</h3>
+                    <p>La <span class="bold-green-title">loi d’orientation</span> des mobilités du 26 décembre 2019 impose aux concessionnaires d’autoroutes l’installation de bornes de recharge rapides pour véhicules électriques sur toutes les aires d’autoroute.</p>
+                    <div>
+                        <div>
+                            <div>couleur blanc</div>
+                            <span>Aucune aire équipée</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="data3-map">
+                    <img id="mapImage" src="/assets/img/carteAuto2020.png" alt="Carte des aires d’autoroutes 2020">
+                </div>
+            </div>
+            <div id="data3-bar"></div>
+        </div>
     </div>
+
+    <style>
+        .data3-bg {
+            background: rgba(105, 105, 105, 25%);
+            width: 100%;
+            border-radius: 20px;
+            max-width: 1200px;
+            height: 80vh;
+            position: relative;
+            z-index: 1; /* Pour s'assurer que l'élément est au-dessus des autres éléments */
+        }
+
+        .content-data3 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 20px;
+            gap: 50px;
+        }
+
+        .data3-map {
+            width: 100%;
+        }
+
+        .data3-map img {
+            width: 100%;
+        }
+
+        .data3-texte {
+            width: 100%;
+            padding: 20px;
+        }
+
+        #data3-bar {
+            width: 40px;
+            max-width: 1200px;
+            height: 800px;
+            background: rgba(105, 105, 105, 25%);
+            border-radius: 20px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin-top: -30px;
+        }
+    </style>
+
+    <script>
+        // Initialisation de Lenis pour le smooth scrolling
+        const lenis = new Lenis({
+            smooth: true,
+            direction: 'vertical', // le défilement est vertical
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Fonction pour mettre à jour l'image de la carte avec GSAP
+        function updateMap(year) {
+            const mapImage = document.getElementById('mapImage');
+            const newSrc = `/assets/img/carteAuto${year}.png`;
+
+            // Animation de transition avec GSAP
+            gsap.to(mapImage, {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    mapImage.src = newSrc;
+                    mapImage.alt = `Carte des aires d’autoroutes ${year}`;
+                    gsap.to(mapImage, { opacity: 1, duration: 0.5 });
+                }
+            });
+        }
+
+        // Configuration de ScrollTrigger
+        const years = [2020, 2021, 2022, 2023, 2024]; // Liste des années
+        const triggers = years.map((year, index) => {
+            return {
+                year,
+                trigger: `#data3`, // Sélectionne l'élément à observer
+                start: `${index * 100}% top`, // Commence à un certain point
+                end: `${(index + 1) * 100}% top`, // Termine au point suivant
+                onEnter: () => updateMap(year), // Mise à jour de la carte lorsque l'élément entre dans la vue
+            };
+        });
+
+        // Création des ScrollTriggers
+        triggers.forEach(({ year, trigger, start, end, onEnter }) => {
+            ScrollTrigger.create({
+                trigger: trigger,
+                start: start,
+                end: end,
+                onEnter: onEnter,
+                scrub: true // Active le scrubbing pour l'animation
+            });
+        });
+
+        // Fonction pour rendre la div fixe
+        ScrollTrigger.create({
+            trigger: "#data3",
+            start: "top top", // La div devient fixe au début de la page
+            end: "bottom top", // Elle reste fixe jusqu'à ce que la prochaine section soit atteinte
+            pin: true, // Rendre la div fixe
+            pinSpacing: true, // Évite d'ajouter de l'espace lors du pinning
+        });
+    </script>
+
+
     <div id="data4" class="data4">
         <div class="block-data4">
             <div class="block-data4-chart1">
