@@ -23,82 +23,138 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Réinitialisation des animations pour les bornes ---
         const numberElement = document.getElementById('scroll-number');
         const numberElementBar = document.querySelector('.content-bar-gsap #scroll-number');
-        const startValue = 0;
-        const endValue = 120;
-        let currentValue = {value: startValue};
+        const yearElement = document.getElementById('scroll-year');
+        const yearPlusElement = document.getElementById('scroll-year-plus'); // Va afficher l'année précédente
+        const yearMoinsElement = document.getElementById('scroll-year-moins'); // Va afficher l'année suivante
 
-        // Animation des chiffres au scroll
-        gsap.to(currentValue, {
-            value: endValue,
-            scrollTrigger: {
-                trigger: ".orange",
-                scrub: true,
-                start: "top top",
-                end: "+=100%",
-            },
-            onUpdate: function () {
-                const value = Math.floor(currentValue.value);
-                if (numberElement && numberElementBar) {
-                    numberElement.textContent = value;
-                    numberElementBar.textContent = value;
+        fetch('/assets/datas/operateurData.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
                 }
-            }
-        });
+                return response.json();
+            })
+            .then(data => {
+                const totalBornes = data.reduce((total, entry) => total + entry["Record Count"], 0);
+                let currentValue = {value: 0};
 
-        // --- Réinitialisation des animations pour la ligne des bornes ---
-        gsap.fromTo(".line-2",
-            {x: "-100%"},
-            {
-                x: "0%",
-                scrollTrigger: {
-                    trigger: ".orange",
-                    scrub: true,
-                    start: "top top",
-                    end: "+=100%",
-                },
-                ease: "none"
-            }
-        );
+                // --- Animation des chiffres pour les bornes ---
+                gsap.to(currentValue, {
+                    value: totalBornes,
+                    scrollTrigger: {
+                        trigger: ".orange",
+                        scrub: true,
+                        start: "top top",
+                        end: "+=100%",
+                        onUpdate: function (self) {
+                            const yearIndex = Math.floor(self.progress * 12);  // Maximum 12 années
+                            const divisor = 13 - yearIndex;
+
+                            if (divisor > 0) {
+                                const result = totalBornes / divisor;
+                                const value = Math.floor(result);
+                                numberElement.textContent = value;
+                                numberElementBar.textContent = value;
+
+                                // Mise à jour de l'année actuelle, précédente, et suivante
+                                const currentYear = 2011 + yearIndex;
+                                yearElement.textContent = currentYear;
+                                yearPlusElement.textContent = currentYear - 1; // L'année du haut est l'année précédente
+                                yearMoinsElement.textContent = currentYear + 1; // L'année du bas est l'année suivante
+
+                                // Animation de l'opacité et du défilement pour les années
+                                gsap.to(yearElement, {opacity: 1, y: 0});
+                            }
+                        }
+                    }
+                });
+
+                // --- Animation de la ligne des bornes ---
+                gsap.fromTo(".line-2",
+                    {x: "-100%"},
+                    {
+                        x: "0%",
+                        scrollTrigger: {
+                            trigger: ".orange",
+                            scrub: true,
+                            start: "top top",
+                            end: "+=100%",
+                        },
+                        ease: "none"
+                    }
+                );
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+
+
 
         // --- Animation des chiffres pour les voitures ---
         const numberElementV = document.getElementById('scroll-number-cars');
         const numberElementBarV = document.querySelector('.content-bar-gsap-cars #scroll-number-cars');
-        const startValueV = 0;
-        const endValueV = 3340;
-        let currentValueV = {value: startValueV};
 
-        // Animation des chiffres pour les voitures au scroll
-        gsap.to(currentValueV, {
-            value: endValueV,
-            scrollTrigger: {
-                trigger: ".orange",
-                scrub: true,
-                start: "top top",
-                end: "+=100%"
-            },
-            onUpdate: function () {
-                const valueV = Math.floor(currentValueV.value);
-                numberElementV.textContent = valueV;
-                numberElementBarV.textContent = valueV;
-            }
-        });
+        fetch('/assets/datas/nbVehicRegions.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const years = Object.keys(data.Feuil1[0]).filter(key => key !== 'regions');
+                const totalByYear = years.map(year => {
+                    return data.Feuil1.reduce((total, region) => total + parseInt(region[year], 10), 0);
+                });
 
-        // --- Animation de la ligne (sans scale) pour les voitures ---
-        gsap.fromTo(".line-3",
-            {x: "-100%"},
-            {
-                x: "0%",
-                scrollTrigger: {
-                    trigger: ".orange",
-                    scrub: true,
-                    pin: true,
-                    start: "top top",
-                    end: "+=100%",
-                    pinSpacing: true
-                },
-                ease: "none"
-            }
-        );
+                let currentValueV = {value: totalByYear[0]};
+
+                // --- Animation des chiffres pour les voitures au scroll ---
+                gsap.to(currentValueV, {
+                    value: totalByYear[totalByYear.length - 1],
+                    scrollTrigger: {
+                        trigger: ".orange",
+                        scrub: true,
+                        start: "top top",
+                        end: "+=100%",
+                        onUpdate: function (self) {
+                            const scrollProgress = self.progress;
+                            const yearIndex = Math.floor(scrollProgress * (years.length - 1));
+                            const nextYearIndex = Math.min(yearIndex + 1, years.length - 1);
+                            const currentYearTotal = totalByYear[yearIndex];
+
+                            const startYearValue = totalByYear[yearIndex];
+                            const endYearValue = totalByYear[nextYearIndex];
+                            const localProgress = (scrollProgress * (years.length - 1)) - yearIndex;
+                            const interpolatedValue = gsap.utils.interpolate(startYearValue, endYearValue, localProgress);
+
+                            const valueToDisplay = Math.floor(interpolatedValue);
+                            numberElementV.textContent = valueToDisplay;
+                            numberElementBarV.textContent = valueToDisplay;
+
+                            // Mise à jour de l'année
+                            const currentYear = years[yearIndex]; // Obtenir l'année à partir du tableau
+                            yearElement.textContent = currentYear; // Afficher l'année correspondante
+                        }
+                    }
+                });
+
+                // --- Animation de la ligne pour les voitures ---
+                gsap.fromTo(".line-3",
+                    {x: "-100%"},
+                    {
+                        x: "0%",
+                        scrollTrigger: {
+                            trigger: ".orange",
+                            scrub: true,
+                            pin: true,
+                            start: "top top",
+                            end: "+=100%",
+                            pinSpacing: true
+                        },
+                        ease: "none"
+                    }
+                );
+            })
+            .catch(error => console.error('Error loading JSON:', error));
 
         gsap.from("#title", {
             scrollTrigger: {
@@ -567,4 +623,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initChart();
     initGlobe();
+
+    gsap.utils.toArray('.data-1-count').forEach((data, index) => {
+        gsap.from(data, {
+            scrollTrigger: {
+                trigger: data,
+                start: "top 80%",
+                end: "top 20%",
+                scrub: true,
+                toggleActions: "play none none reverse"
+            },
+            x: -100,
+            opacity: 0,
+            duration: 1
+        });
+    });
+
+    document.querySelectorAll('.storyButton').forEach(button => {
+        button.addEventListener('click', () => {
+            const storyContainer = button.closest('.storyContainer');  // Trouve le bon storyContainer
+            const storyTitleDisable = storyContainer.querySelector('.storyTitleDisable');
+            const storyLightningDisable = storyContainer.querySelector('.storyLightningDisable');
+            const storyTextContainer = storyContainer.querySelector('.storyTextContainer');
+
+            // Ajout ou suppression des classes uniquement dans le storyContainer actuel
+            storyTitleDisable.classList.toggle('storyTitle');
+            storyLightningDisable.classList.toggle('storyLightning');
+            storyTextContainer.classList.toggle('active');
+            button.classList.toggle('storyButtonActive');
+
+            // Ajout ou suppression de la classe 'active' dans le storyContainer lui-même
+            storyContainer.classList.toggle('active');
+        });
+    });
 });

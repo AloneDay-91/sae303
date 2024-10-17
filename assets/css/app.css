@@ -611,7 +611,6 @@ footer a:hover {
     font-size: 40px;
     font-weight: bold;
     opacity: 0.5;
-    transform: translateY(100%);
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 

@@ -239,11 +239,29 @@ require_once 'components/header.php';
         <div class="data-1-count">
             <div class="data-1-count">
                 <div style="display: flex; flex-direction: column; align-items: center;">
-                    <div class="year-scroll">
-                        <div class="scroll-year" id="scroll-year">
-                            2010
-                        </div>
+                    <div class="scroll-year">
+                        <div class="scroll-year-plus" id="scroll-year-plus">2013</div>
+                        <div class="scroll-year" id="scroll-year">2012</div>
+                        <div class="scroll-year-moins" id="scroll-year-moins">2011</div>
                     </div>
+                    <style>
+                        .scroll-year-plus, .scroll-year, .scroll-year-moins {
+                            font-size: 2.5em;
+                            opacity: 0.5;
+                            font-weight: lighter;
+                        }
+                        #scroll-year-plus {
+                            top: 10%;
+                        }
+                        #scroll-year {
+                            top: 50%;
+                            opacity: 1;
+                            font-weight: 300;
+                        }
+                        #scroll-year-moins {
+                            top: 90%;
+                        }
+                    </style>
                 </div>
             </div>
             <div style="display: flex; flex-direction: column">
@@ -258,17 +276,17 @@ require_once 'components/header.php';
             </div>
         </div>
         <span class="line line-2">
-        <div class="content-bar-gsap">
-            <div class="scroll-number" id="scroll-number">0</div>
-            <span>bornes</span>
-        </div>
-    </span>
+            <div class="content-bar-gsap">
+                <div class="scroll-number" id="scroll-number">0</div>
+                <span>bornes</span>
+            </div>
+        </span>
         <span class="line line-3">
-        <div class="content-bar-gsap-cars">
-            <div class="scroll-number-cars" id="scroll-number-cars">0</div>
-            <span>voitures</span>
-        </div>
-    </span>
+            <div class="content-bar-gsap-cars">
+                <div class="scroll-number-cars" id="scroll-number-cars">0</div>
+                <span>voitures</span>
+            </div>
+        </span>
     </div>
     <div id="data2" class="data2">
         <div style="display: flex; flex-direction: row; align-items: center; width: 100%; justify-content: center">
@@ -363,25 +381,6 @@ backdrop-filter: blur(27px); padding: 10px; border-radius: 30px; display: flex; 
         <iframe src="https://api.mapbox.com/styles/v1/aloneday-91/cm1rthncw00z601pi9k3i3yp7.html?title=false&access_token=pk.eyJ1IjoiYWxvbmVkYXktOTEiLCJhIjoiY20xcnRmcnI2MGVjajJtczlwbWN3cDBpMiJ9.J9vvQyBfq33b_gRuga8qrQ&zoomwheel=false#5.17/46.886/2.413" title="Untitled" style="border:none;"></iframe>
     </div>
 </div>
-    <script>
-        document.querySelectorAll('.storyButton').forEach(button => {
-            button.addEventListener('click', () => {
-                const storyContainer = button.closest('.storyContainer');  // Trouve le bon storyContainer
-                const storyTitleDisable = storyContainer.querySelector('.storyTitleDisable');
-                const storyLightningDisable = storyContainer.querySelector('.storyLightningDisable');
-                const storyTextContainer = storyContainer.querySelector('.storyTextContainer');
-
-                // Ajout ou suppression des classes uniquement dans le storyContainer actuel
-                storyTitleDisable.classList.toggle('storyTitle');
-                storyLightningDisable.classList.toggle('storyLightning');
-                storyTextContainer.classList.toggle('active');
-                button.classList.toggle('storyButtonActive');
-
-                // Ajout ou suppression de la classe 'active' dans le storyContainer lui-même
-                storyContainer.classList.toggle('active');
-            });
-        });
-    </script>
 
 <?php
 require_once 'components/footer.php';
