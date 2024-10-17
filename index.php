@@ -5,22 +5,139 @@ require_once 'components/header.php';
     <!-- Anim voiture section -->
     <div id="home" class="container home">
         <div class="circle"></div>
-        <div class="animtxt">
-        <div class="titleCont"><div class="title">Votre condu</div><svg class="lightning" xmlns="http://www.w3.org/2000/svg" width="109" height="80px" viewBox="0 0 89 129" fill="none">
-                    <path d="M0 74.4231L56.6364 0L44.5 54.5769H89L32.3636 129L44.5 74.4231H0Z" fill="#90FF00" /></svg
-            ><div class="title">te,</div></div><br><div class="title">votre planète.</div>
+        <div class="landing">
+            <div class="landing-txt">Votre voyage commence ici, sans émission.</div>
+            <div class="landing-button">Commencer l’expérience</div>
         </div>
+        <div class="animtxt">
+        <div class="titleCont"><div class="titletxt">Votre condu</div><svg class="lightning" xmlns="http://www.w3.org/2000/svg" width="109" height="80px" viewBox="0 0 89 129" fill="none">
+                    <path d="M0 74.4231L56.6364 0L44.5 54.5769H89L32.3636 129L44.5 74.4231H0Z" fill="#90FF00" /></svg
+            ><div class="titletxt">te,</div></div><br><div class="titletxt">votre planète.</div>
+        </div>
+        <img class="tesla" src="assets/img/Tesla.png" alt="Voiture Tesla">
     </div>
     <!-- Title section -->
     <div id="title" class="container title">
-        <h2>L'histoire de l'électrique</h2>
+        <h1>L'histoire de l'électrique</h1>
     </div>
     <!-- Histoire sections -->
     <div id="histoire1" class="histoire">
-        <p>Histoire voiture</p>
+        <h2>Les voitures électriques</h2>
+        <div class="storyContainer">
+            <div class="storyContent">
+                <p>Un essor temporaire.</p>
+                <div class="storyButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
+                        <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="storyText">
+                En 1899, la voiture électrique « La Jamais Contente » dépasse les 100 km/h. Au début du 20e siècle, 38% des voitures aux États-Unis sont électriques, mais l'arrivée des modèles à essence, comme la Ford T en 1908, fait rapidement oublier l'électrique.
+            </div>
+            <div class="storyPoint"></div>
+        </div>
+        <div class="storyContainer">
+            <div class="storyContent">
+                <p>Le retour de l'électrique.</p>
+                <div class="storyButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
+                        <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="storyText">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla, tortor sed elementum hendrerit, sapien odio volutpat nulla, id fermentum enim arcu nec libero. Vivamus vehicula nisl sit amet ligula fermentum auctor. Curabitur fringilla, tortor sed elementum hendrerit.
+            </div>
+            <div class="storyPoint"></div>
+        </div>
+        <div class="storyContainer">
+            <div class="storyContent">
+                <p>La révolution Tesla.</p>
+                <div class="storyButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
+                        <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="storyText">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla, tortor sed elementum hendrerit, sapien odio volutpat nulla, id fermentum enim arcu nec libero. Vivamus vehicula nisl sit amet ligula fermentum auctor. Curabitur fringilla, tortor sed elementum hendrerit.
+            </div>
+            <div class="storyPoint"></div>
+        </div>
+        <div class="storyContainer">
+            <div class="storyContent">
+                <p>Aujourd'hui, la voiture électrique.</p>
+                <div class="storyButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
+                        <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="storyText">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla, tortor sed elementum hendrerit, sapien odio volutpat nulla, id fermentum enim arcu nec libero. Vivamus vehicula nisl sit amet ligula fermentum auctor. Curabitur fringilla, tortor sed elementum hendrerit.
+            </div>
+            <div class="storyPoint"></div>
+        </div>
     </div>
-    <div id="histoire2" class="container histoire">
-        <p>Histoire bornes</p>
+    <div id="histoire2" class="histoire">
+        <h2>Les Bornes électriques</h2>
+        <div class="storyContainer">
+            <div class="storyContent">
+                <p>Origines des bornes de recharge</p>
+                <div class="storyButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
+                        <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="storyText">
+                En 1899, la voiture électrique « La Jamais Contente » dépasse les 100 km/h. Au début du 20e siècle, 38% des voitures aux États-Unis sont électriques, mais l'arrivée des modèles à essence, comme la Ford T en 1908, fait rapidement oublier l'électrique.
+            </div>
+            <div class="storyPoint"></div>
+        </div>
+        <div class="storyContainer">
+            <div class="storyContent">
+                <p>Loi Grenelle 2 et bornes publiques</p>
+                <div class="storyButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
+                        <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="storyText">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla, tortor sed elementum hendrerit, sapien odio volutpat nulla, id fermentum enim arcu nec libero. Vivamus vehicula nisl sit amet ligula fermentum auctor. Curabitur fringilla, tortor sed elementum hendrerit.
+            </div>
+            <div class="storyPoint"></div>
+        </div>
+        <div class="storyContainer">
+            <div class="storyContent">
+                <p>Le programme Advenir</p>
+                <div class="storyButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
+                        <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="storyText">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla, tortor sed elementum hendrerit, sapien odio volutpat nulla, id fermentum enim arcu nec libero. Vivamus vehicula nisl sit amet ligula fermentum auctor. Curabitur fringilla, tortor sed elementum hendrerit.
+            </div>
+            <div class="storyPoint"></div>
+        </div>
+        <div class="storyContainer">
+            <div class="storyContent">
+                <p>Objectifs de déploiement national</p>
+                <div class="storyButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
+                        <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="storyText">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla, tortor sed elementum hendrerit, sapien odio volutpat nulla, id fermentum enim arcu nec libero. Vivamus vehicula nisl sit amet ligula fermentum auctor. Curabitur fringilla, tortor sed elementum hendrerit.
+            </div>
+            <div class="storyPoint"></div>
+        </div>
     </div>
     <!-- Data sections -->
     <div id="data1" class="data1 panel orange">
