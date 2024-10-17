@@ -8,6 +8,10 @@ html, body {
     scroll-behavior: smooth;
 }
 
+p{
+    margin: 0;
+}
+
 .container {
     /*max-width: 1200px;*/
     margin: 0 auto;
@@ -221,7 +225,7 @@ h2{
 .histoire {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    /*height: 100vh;*/
     padding: 0 40px;
 }
 
@@ -231,6 +235,26 @@ h2{
     flex-direction: column;
     gap: 30px;
     margin-bottom: 25px;
+}
+
+.storyTextContainer{
+    overflow: hidden;
+    height: 0px;
+    transition: all 0.3s ease-in-out;
+}
+
+.storyTextContainer.active{
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.storyContainer.active .storyText {
+    transform: translateY(0px);
+    transition: all 0.4s ease-in-out;
+}
+
+.storyContainer.active .storyButton svg {
+    transform: rotate(180deg);
 }
 
 .storyContent{
@@ -251,12 +275,18 @@ h2{
     border-radius: 41.5px;
     background: rgba(139, 139, 139, 0.25);
     backdrop-filter: blur(27px);
+    cursor: pointer;
+}
+
+.storyButton svg {
+    transition: transform 0.3s ease;
 }
 
 .storyText{
     padding-right: 20%;
     color: rgba(255, 255, 255, 0.6);
-    /*display: none;*/
+    transform: translateY(-40px);
+    transition: all 0.4s ease-in-out;
 }
 
 .storyPoint{
@@ -265,6 +295,50 @@ h2{
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="1"><circle cx="1" cy="0.5" r="0.5" fill="white"/></svg>');
     background-repeat: repeat-x;
     background-size: 12px 1px;
+}
+
+.storyTitle{
+    padding: 14px 30px !important;
+    background: rgba(139, 139, 139, 0.25) !important;
+    backdrop-filter: blur(27px);
+    transition: all 0.4s ease-in-out ;
+}
+
+.storyTitleDisable{
+    display: flex;
+    align-items: center;
+    background: none;
+    border-radius: 41.5px;
+    padding: 0;
+    backdrop-filter: blur(27px);
+    transition: all 0.4s ease-in-out ;
+}
+
+.storyLightning {
+    transition: all 0.4s ease-in-out ;
+    opacity: 100 !important;
+    scale: 1 !important;
+}
+
+.storyLightningDisable{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    left: 0;
+    background: black;
+    opacity: 0;
+    transition: all 0.4s ease-in-out ;
+    scale: 0.5;
+    border-radius: 80px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.green{
+    color: #90FF00;
+    font-weight: 500;
 }
 
 

@@ -25,57 +25,116 @@ require_once 'components/header.php';
         <h2>Les voitures électriques</h2>
         <div class="storyContainer">
             <div class="storyContent">
-                <p>Un essor temporaire.</p>
+                <div class="storyTitleDisable">
+                    <p>Les débuts.</p>
+                    <div class="storyLightningDisable">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="23" viewBox="0 0 12 23" fill="none">
+                            <path d="M0 13.2692L7.63636 0L6 9.73077H12L4.36364 23L6 13.2692H0Z" fill="#90FF00"/>
+                        </svg>
+                    </div>
+                </div>
                 <div class="storyButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
                         <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
             </div>
-            <div class="storyText">
-                En 1899, la voiture électrique « La Jamais Contente » dépasse les 100 km/h. Au début du 20e siècle, 38% des voitures aux États-Unis sont électriques, mais l'arrivée des modèles à essence, comme la Ford T en 1908, fait rapidement oublier l'électrique.
+            <div class="storyTextContainer">
+                <div class="storyText">
+                    Les premières voitures électriques remontent aux années <span class="green">1830</span>, avec des prototypes rudimentaires. C’est en <span class="green">1859</span> que la batterie rechargeable, inventée par Gaston Planté, permet de rendre ces véhicules viables.
+                </div>
             </div>
             <div class="storyPoint"></div>
         </div>
         <div class="storyContainer">
             <div class="storyContent">
-                <p>Le retour de l'électrique.</p>
+                <div class="storyTitleDisable">
+                    <p>Un essor temporaire.</p>
+                    <div class="storyLightningDisable">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="23" viewBox="0 0 12 23" fill="none">
+                            <path d="M0 13.2692L7.63636 0L6 9.73077H12L4.36364 23L6 13.2692H0Z" fill="#90FF00"/>
+                        </svg>
+                    </div>
+                </div>
                 <div class="storyButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
                         <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
             </div>
-            <div class="storyText">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla, tortor sed elementum hendrerit, sapien odio volutpat nulla, id fermentum enim arcu nec libero. Vivamus vehicula nisl sit amet ligula fermentum auctor. Curabitur fringilla, tortor sed elementum hendrerit.
+            <div class="storyTextContainer">
+                <div class="storyText">
+                    En <span class="green">1899</span>, la voiture électrique « La Jamais Contente » dépasse les 100 km/h. Au début du <span class="green">20e siècle</span>, 38% des voitures aux États-Unis sont électriques, mais l'arrivée des modèles à essence, comme la Ford T en <span class="green">1908</span>, fait rapidement oublier l'électrique.
+                </div>
             </div>
             <div class="storyPoint"></div>
         </div>
         <div class="storyContainer">
             <div class="storyContent">
-                <p>La révolution Tesla.</p>
+                <div class="storyTitleDisable">
+                    <p>Le retour de l'électrique.</p>
+                    <div class="storyLightningDisable">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="23" viewBox="0 0 12 23" fill="none">
+                            <path d="M0 13.2692L7.63636 0L6 9.73077H12L4.36364 23L6 13.2692H0Z" fill="#90FF00"/>
+                        </svg>
+                    </div>
+                </div>
                 <div class="storyButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
                         <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
             </div>
-            <div class="storyText">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla, tortor sed elementum hendrerit, sapien odio volutpat nulla, id fermentum enim arcu nec libero. Vivamus vehicula nisl sit amet ligula fermentum auctor. Curabitur fringilla, tortor sed elementum hendrerit.
+            <div class="storyTextContainer">
+                <div class="storyText">
+                    Face à la pollution et aux crises pétrolières, l'intérêt pour les voitures électriques renaît dans les années <span class="green">1960</span>. En <span class="green">1990</span>, des modèles hybrides et 100% électriques émergent, mais le marché reste faible.
+                </div>
             </div>
             <div class="storyPoint"></div>
         </div>
         <div class="storyContainer">
             <div class="storyContent">
-                <p>Aujourd'hui, la voiture électrique.</p>
+                <div class="storyTitleDisable">
+                    <p>La révolution Tesla.</p>
+                    <div class="storyLightningDisable">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="23" viewBox="0 0 12 23" fill="none">
+                            <path d="M0 13.2692L7.63636 0L6 9.73077H12L4.36364 23L6 13.2692H0Z" fill="#90FF00"/>
+                        </svg>
+                    </div>
+                </div>
                 <div class="storyButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
                         <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
             </div>
-            <div class="storyText">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla, tortor sed elementum hendrerit, sapien odio volutpat nulla, id fermentum enim arcu nec libero. Vivamus vehicula nisl sit amet ligula fermentum auctor. Curabitur fringilla, tortor sed elementum hendrerit.
+            <div class="storyTextContainer">
+                <div class="storyText">
+                    En <span class="green">2008</span>, Tesla révolutionne le secteur avec son roadster électrique. Depuis, les voitures électriques gagnent du terrain, grâce à des performances en constante évolution et l'expansion des bornes de recharge.
+                </div>
+            </div>
+            <div class="storyPoint"></div>
+        </div>
+        <div class="storyContainer">
+            <div class="storyContent">
+                <div class="storyTitleDisable">
+                    <p>Aujourd'hui, la voiture électrique.</p>
+                    <div class="storyLightningDisable">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="23" viewBox="0 0 12 23" fill="none">
+                            <path d="M0 13.2692L7.63636 0L6 9.73077H12L4.36364 23L6 13.2692H0Z" fill="#90FF00"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="storyButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
+                        <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="storyTextContainer">
+                <div class="storyText">
+                    <span class="green">Aujourd'hui</span>, les voitures électriques ne sont plus une nouveauté, mais une réalité. Avec des bornes de recharge toujours plus accessibles, elles s'imposent comme la solution de demain.
+                </div>
             </div>
             <div class="storyPoint"></div>
         </div>
@@ -84,57 +143,93 @@ require_once 'components/header.php';
         <h2>Les Bornes électriques</h2>
         <div class="storyContainer">
             <div class="storyContent">
-                <p>Origines des bornes de recharge</p>
+                <div class="storyTitleDisable">
+                    <p>Origines des bornes de recharge.</p>
+                    <div class="storyLightningDisable">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="23" viewBox="0 0 12 23" fill="none">
+                            <path d="M0 13.2692L7.63636 0L6 9.73077H12L4.36364 23L6 13.2692H0Z" fill="#90FF00"/>
+                        </svg>
+                    </div>
+                </div>
                 <div class="storyButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
                         <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
             </div>
-            <div class="storyText">
-                En 1899, la voiture électrique « La Jamais Contente » dépasse les 100 km/h. Au début du 20e siècle, 38% des voitures aux États-Unis sont électriques, mais l'arrivée des modèles à essence, comme la Ford T en 1908, fait rapidement oublier l'électrique.
+            <div class="storyTextContainer">
+                <div class="storyText">
+                    À la fin du <span class="green">XIXe siècle</span>, les premières stations de recharge pour véhicules électriques apparaissaient déjà, fonctionnant avec un système de jetons. Depuis, le développement des infrastructures de recharge a considérablement évolué.
+                </div>
             </div>
             <div class="storyPoint"></div>
         </div>
         <div class="storyContainer">
             <div class="storyContent">
-                <p>Loi Grenelle 2 et bornes publiques</p>
+                <div class="storyTitleDisable">
+                    <p>Loi Grenelle 2 et bornes publiques.</p>
+                    <div class="storyLightningDisable">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="23" viewBox="0 0 12 23" fill="none">
+                            <path d="M0 13.2692L7.63636 0L6 9.73077H12L4.36364 23L6 13.2692H0Z" fill="#90FF00"/>
+                        </svg>
+                    </div>
+                </div>
                 <div class="storyButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
                         <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
             </div>
-            <div class="storyText">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla, tortor sed elementum hendrerit, sapien odio volutpat nulla, id fermentum enim arcu nec libero. Vivamus vehicula nisl sit amet ligula fermentum auctor. Curabitur fringilla, tortor sed elementum hendrerit.
+            <div class="storyTextContainer">
+                <div class="storyText">
+                    La loi Grenelle 2 de <span class="green">2010</span> a permis aux collectivités de déployer des stations de recharge en réponse à une offre privée insuffisante. Diverses initiatives, telles que la mission Hirtzman et le projet Infini DRIVE, ont été lancées pour standardiser et accélérer la mise en place de bornes de recharge, tout en favorisant l'écoconception et l'intégration dans des réseaux électriques intelligents.
+                </div>
             </div>
             <div class="storyPoint"></div>
         </div>
         <div class="storyContainer">
             <div class="storyContent">
-                <p>Le programme Advenir</p>
+                <div class="storyTitleDisable">
+                    <p>Le programme Advenir.</p>
+                    <div class="storyLightningDisable">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="23" viewBox="0 0 12 23" fill="none">
+                            <path d="M0 13.2692L7.63636 0L6 9.73077H12L4.36364 23L6 13.2692H0Z" fill="#90FF00"/>
+                        </svg>
+                    </div>
+                </div>
                 <div class="storyButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
                         <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
             </div>
-            <div class="storyText">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla, tortor sed elementum hendrerit, sapien odio volutpat nulla, id fermentum enim arcu nec libero. Vivamus vehicula nisl sit amet ligula fermentum auctor. Curabitur fringilla, tortor sed elementum hendrerit.
+            <div class="storyTextContainer">
+                <div class="storyText">
+                    En <span class="green">2016</span>, le programme Advenir a vu le jour pour soutenir l’installation de bornes dans les immeubles collectifs et les parkings d’entreprises. Ce programme a été renforcé en <span class="green">2020</span> par le gouvernement, avec l'objectif ambitieux d'atteindre 100 000 bornes d’ici fin <span class="green">2021</span>. De plus, un plan de 100 millions d’euros a été annoncé pour déployer des stations de recharge ultrarapides sur les autoroutes et voies rapides d’ici <span class="green">2022</span>.
+                </div>
             </div>
             <div class="storyPoint"></div>
         </div>
         <div class="storyContainer">
             <div class="storyContent">
-                <p>Objectifs de déploiement national</p>
+                <div class="storyTitleDisable">
+                    <p>Objectifs de déploiement national.</p>
+                    <div class="storyLightningDisable">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="23" viewBox="0 0 12 23" fill="none">
+                            <path d="M0 13.2692L7.63636 0L6 9.73077H12L4.36364 23L6 13.2692H0Z" fill="#90FF00"/>
+                        </svg>
+                    </div>
+                </div>
                 <div class="storyButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 39 21" fill="none">
                         <path d="M1.0625 19.7187L19.5 1.28125L37.9375 19.7187" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
             </div>
-            <div class="storyText">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla, tortor sed elementum hendrerit, sapien odio volutpat nulla, id fermentum enim arcu nec libero. Vivamus vehicula nisl sit amet ligula fermentum auctor. Curabitur fringilla, tortor sed elementum hendrerit.
+            <div class="storyTextContainer">
+                <div class="storyText">
+                    Grâce à ces mesures, la France vise à répondre aux besoins croissants en infrastructures pour soutenir la transition vers une mobilité électrique plus respectueuse de l’environnement.
+                </div>
             </div>
             <div class="storyPoint"></div>
         </div>
@@ -268,6 +363,25 @@ backdrop-filter: blur(27px); padding: 10px; border-radius: 30px; display: flex; 
         <iframe src="https://api.mapbox.com/styles/v1/aloneday-91/cm1rthncw00z601pi9k3i3yp7.html?title=false&access_token=pk.eyJ1IjoiYWxvbmVkYXktOTEiLCJhIjoiY20xcnRmcnI2MGVjajJtczlwbWN3cDBpMiJ9.J9vvQyBfq33b_gRuga8qrQ&zoomwheel=false#5.17/46.886/2.413" title="Untitled" style="border:none;"></iframe>
     </div>
 </div>
+    <script>
+        document.querySelectorAll('.storyButton').forEach(button => {
+            button.addEventListener('click', () => {
+                const storyContainer = button.closest('.storyContainer');  // Trouve le bon storyContainer
+                const storyTitleDisable = storyContainer.querySelector('.storyTitleDisable');
+                const storyLightningDisable = storyContainer.querySelector('.storyLightningDisable');
+                const storyTextContainer = storyContainer.querySelector('.storyTextContainer');
+
+                // Ajout ou suppression des classes uniquement dans le storyContainer actuel
+                storyTitleDisable.classList.toggle('storyTitle');
+                storyLightningDisable.classList.toggle('storyLightning');
+                storyTextContainer.classList.toggle('active');
+                button.classList.toggle('storyButtonActive');
+
+                // Ajout ou suppression de la classe 'active' dans le storyContainer lui-même
+                storyContainer.classList.toggle('active');
+            });
+        });
+    </script>
 
 <?php
 require_once 'components/footer.php';
