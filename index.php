@@ -308,7 +308,7 @@ backdrop-filter: blur(27px); padding: 10px; border-radius: 30px; display: flex; 
                     <img style="width: 20px;" src="/assets/img/cars.svg" alt="">
                 </span>
                     <div>
-                        <button style="background: rgba(139, 139, 139, 0.25); border: none; border-radius: 999px; color: #90FF00; padding: 12px; display: inline-flex;">
+                        <button id="btnSwitchData" style="background: rgba(139, 139, 139, 0.25); border: none; border-radius: 999px; color: #90FF00; padding: 12px; display: inline-flex;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw">
                                 <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
                                 <path d="M3 3v5h5"/>
@@ -319,8 +319,11 @@ backdrop-filter: blur(27px); padding: 10px; border-radius: 30px; display: flex; 
                     </div>
                 </div>
                 <p style="color: rgb(255,255,255,60%)">Par région</p>
-                <div style="width: 100%;">
+                <div id="map1" style="width: 100%;">
                     <canvas id="myChart3"></canvas>
+                </div>
+                <div id="map2" style="width: 100%; display: none">
+                    <canvas id="myChart5"></canvas>
                 </div>
                 <script>
 
@@ -331,7 +334,7 @@ backdrop-filter: blur(27px); padding: 10px; border-radius: 30px; display: flex; 
         </div>
     </div>
 
-    <div id="data3" class="data3">
+    <div id="data3" class="data3 panel orange">
         <div class="data3-bg">
             <div class="content-data3">
                 <div class="data3-texte">
@@ -398,24 +401,13 @@ backdrop-filter: blur(27px); padding: 10px; border-radius: 30px; display: flex; 
     </style>
 
     <script>
-        // Initialisation de Lenis pour le smooth scrolling
-        const lenis = new Lenis({
-            smooth: true,
-            direction: 'vertical', // le défilement est vertical
-        });
 
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        // Fonction pour mettre à jour l'image de la carte avec GSAP
+        // Fonction de mise à jour de la carte
         function updateMap(year) {
             const mapImage = document.getElementById('mapImage');
             const newSrc = `/assets/img/carteAuto${year}.png`;
 
-            // Animation de transition avec GSAP
+            // Transition d'image avec GSAP
             gsap.to(mapImage, {
                 opacity: 0,
                 duration: 0.5,
@@ -427,36 +419,18 @@ backdrop-filter: blur(27px); padding: 10px; border-radius: 30px; display: flex; 
             });
         }
 
-        // Configuration de ScrollTrigger
-        const years = [2020, 2021, 2022, 2023, 2024]; // Liste des années
-        const triggers = years.map((year, index) => {
-            return {
-                year,
-                trigger: `#data3`, // Sélectionne l'élément à observer
-                start: `${index * 100}% top`, // Commence à un certain point
-                end: `${(index + 1) * 100}% top`, // Termine au point suivant
-                onEnter: () => updateMap(year), // Mise à jour de la carte lorsque l'élément entre dans la vue
-            };
-        });
+        // Liste des années
+        const years = [2020, 2021, 2022, 2023, 2024];
 
-        // Création des ScrollTriggers
-        triggers.forEach(({ year, trigger, start, end, onEnter }) => {
+        // ScrollTrigger pour changer d'image à chaque étape du scroll
+        years.forEach((year, index) => {
             ScrollTrigger.create({
-                trigger: trigger,
-                start: start,
-                end: end,
-                onEnter: onEnter,
-                scrub: true // Active le scrubbing pour l'animation
+                trigger: ".orange", // Sélectionner la section contenant la carte
+                start: `top+=${index * 100}% top`, // Début pour chaque année
+                end: `+=100%`, // Chaque année prend 100% de la hauteur de l'écran
+                onEnter: () => updateMap(year), // Appelle la fonction de changement d'image
+                scrub: true, // Activer le scrubbing pour une animation fluide
             });
-        });
-
-        // Fonction pour rendre la div fixe
-        ScrollTrigger.create({
-            trigger: "#data3",
-            start: "top top", // La div devient fixe au début de la page
-            end: "bottom top", // Elle reste fixe jusqu'à ce que la prochaine section soit atteinte
-            pin: true, // Rendre la div fixe
-            pinSpacing: true, // Évite d'ajouter de l'espace lors du pinning
         });
     </script>
 
