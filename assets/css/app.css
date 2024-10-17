@@ -15,7 +15,7 @@ p{
 .container {
     /*max-width: 1200px;*/
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 80px;
     height: 100vh; /* Hauteur de la fenêtre */
     display: flex; /* Flexbox pour un meilleur alignement */
     align-items: center; /* Centrer verticalement */
@@ -36,6 +36,9 @@ h1{
     text-transform: uppercase;
     color: #90FF00;
     font-size: 3.2rem;
+}
+h2 span{
+    color: white;
 }
 
 h2{
@@ -125,7 +128,7 @@ h2{
     line-height: normal;
     text-transform: uppercase;
     width: 100%;
-    transform: translateX(-250%);
+    transform: translateX(-280%);
     animation: textAnim 0.8s ease-in-out forwards 1s;
 }
 
@@ -137,7 +140,7 @@ h2{
 
 @keyframes textAnim {
     0% {
-        transform: translateX(-250%);
+        transform: translateX(-280%);
     }
     100% {
         transform: translateX(0%);
@@ -226,7 +229,7 @@ h2{
     display: flex;
     flex-direction: column;
     /*height: 100vh;*/
-    padding: 0 40px;
+    padding: 0 80px;
 }
 
 .storyContainer{
@@ -384,40 +387,194 @@ h2{
 }
 
 .data4 {
-    width: 100%; /* Largeur de la section */
-    height: 100vh; /* Hauteur de la section */
-    display: flex; /* Flexbox pour un meilleur alignement */
-    justify-content: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
-    color: white; /* Couleur du texte */
-}
-
-.data5 {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    height: 100vh; /* Hauteur de la fenêtre */
-    color: #ffffff;
-}
-
-
-.data6 {
-    width: 100%;
+    padding: 0 80px;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    position: relative; /* Assure que l'élément parent a un contexte de positionnement */
+}
+
+.data5 {
+    padding: 100px 80px 0 80px;
+    height: 100vh;
+    color: #ffffff;
+}
+.data6 {
+    height: 100vh;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    padding: 0 80px;
 }
 
 .data6 #globeViz {
     position: absolute;
-    left: -50%; /* Décale le globe de 25% à gauche pour le rendre à moitié visible */
-    width: 150%; /* Augmente la taille pour que le globe dépasse à gauche */
-    height: 100%; /* S'assure que le globe occupe toute la hauteur */
+    left: -55%;
+    width: 150%;
+    height: 100%;
+    pointer-events: none;
 }
 
+.data6Container {
+    padding-top: 50px;
+    padding-left: 200px;
+    display: flex;
+    gap: 40px;
+}
+
+.numberPart{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.numberItem{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.numberName {
+    padding: 5px 9px;
+    background: white;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    position: absolute;
+    z-index: +1;
+    width: 120px;
+    left: -45px;
+}
+
+.numberName svg{
+    padding: 5px;
+    border-radius: 30px;
+    background: #011415;
+}
+
+.numberName span{
+    padding-right: 3px;
+}
+
+.numberSvg{
+    fill: #90FF00;
+}
+
+.numberData{
+    color: #90FF00;
+    font-size: 8rem;
+    font-weight: 300;
+}
+
+.numberDataBornes{
+    font-size: 7rem;
+}
+
+.numberDataOpe{
+    font-size: 6rem;
+}
+
+#bornesSvg, #opeSvg, #numberSvg{
+    padding-right: 30px;
+}
+
+.opeRank{
+    display: flex;
+    gap: 50px;
+    padding-left: 30px;
+}
+
+.opePlus {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 400;
+    gap: 20px;
+}
+
+.num {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 19px;
+    border: 2px solid #FFF;
+    background: #011415;
+    color: #90FF00;
+    font-weight: 400;
+}
+
+.infoButtonContainer{
+    display: flex;
+    gap: 20px;
+}
+
+.infoButtonAjd, .infoButtonDem{
+    display: flex;
+    width: 130px;
+    padding: 10px 14px;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 41.5px;
+    background: rgba(139, 139, 139, 0.25);
+    backdrop-filter: blur(27px);
+    transition: all 0.3s ease-in-out;
+}
+
+.infoButtonDisable{
+    background: rgba(139, 139, 139, 0) !important;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.infoButtonDisable:hover .infoTextDisable {
+    color: #90FF00 !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 40px;
+    background-color: #90FF00;
+    transition: all 0.3s ease-in-out;
+}
+
+.dotDisable{
+    opacity: 0 !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.infoText {
+    color: #FFF;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.infoTextDisable{
+    color: rgba(139, 139, 139, 0.6);
+    transition: all 0.3s ease-in-out;
+}
+
+.infoParagraphe{
+    color: white;
+    text-align: justify;
+    font-weight: 200;
+    line-height: 1.5rem;
+}
+
+.textPart{
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
 
 .mapbox {
     width: 100%;
@@ -662,10 +819,35 @@ h3 {
 }
 
 #data5 .div-data5 {
+    padding-top: 40px;
     display: flex;
     justify-content: center;
     align-items: start;
     gap: 20px;
+}
+
+#btnPlus, #btnMinus{
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.minPlus{
+    transition: all 0.3s ease-in-out;
+}
+
+.minPlus:hover{
+    scale: 1.2;
+    transition: all 0.3s ease-in-out;
+}
+
+#btnPlus:hover, #btnMinus:hover{
+    transition: all 0.3s ease-in-out;
+    background: #011415 !important;
+    color: white !important;
+}
+
+.center{
+    text-align: center;
 }
 
 #data5 div .text-data5 {
@@ -780,8 +962,6 @@ h3 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .block-data4-chart1, .block-data4-chart2 {
@@ -791,10 +971,6 @@ h3 {
 .block-data4-chart1 canvas, .block-data4-chart2 canvas {
     width: 100%;
     height: 100%;
-}
-
-.data1, .data2, .data3, .data4, .data5, .data6 {
-    /*margin: 200px auto;*/
 }
 
 .map-tooltip {
@@ -809,10 +985,28 @@ h3 {
     font-size: 11px;
 }
 
+.interact{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
 
-
-
-
+#addData, #addDataStation, #removeData, #removeDataStation{
+    background: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50px;
+    color: #011415;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+#addData:hover, #addDataStation:hover, #removeData:hover, #removeDataStation:hover{
+    background: #011415;
+    color: #90FF00;
+    transition: all 0.3s ease-in-out;
+}
 
 
 html.lenis, html.lenis body {
