@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../assets/css/app.css">
     <script src="../assets/js/app.js" ></script>
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+    <title><?php echo htmlspecialchars($title); ?></title>
 
     <!--CDN-->
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>

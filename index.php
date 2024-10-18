@@ -1,5 +1,6 @@
 <?php
 require_once 'components/header.php';
+$title = "Accueil";
 ?>
 <div>
     <!-- Anim voiture section -->

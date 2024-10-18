@@ -792,16 +792,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Slider pour changer les images par rapport à l'année
-const slider = document.getElementById('yearSlider');
-const mapImage = document.getElementById('mapImage');
-const currentYearDisplay = document.getElementById('currentYearDisplay');
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('yearSlider');
+    const mapImage = document.getElementById('mapImage');
+    const currentYearDisplay = document.getElementById('currentYearDisplay');
 
-slider.addEventListener('input', () => {
-    const selectedYear = slider.value;
-    mapImage.src = `/assets/img/carteAuto${selectedYear}.png`;
-    currentYearDisplay.textContent = selectedYear; // Mettre à jour l'affichage de l'année
+    if (slider && mapImage && currentYearDisplay) {
+        slider.addEventListener('input', () => {
+            const selectedYear = slider.value;
+            mapImage.src = `/assets/img/carteAuto${selectedYear}.png`;
+            currentYearDisplay.textContent = selectedYear; // Mettre à jour l'affichage de l'année
+        });
+    } else {
+        console.error('Un ou plusieurs éléments sont manquants dans le DOM.');
+    }
 });
+
 
 const buttonAjd = document.querySelector('.infoButtonAjd');
 const buttonDemain = document.querySelector('.infoButtonDem');
@@ -832,6 +838,37 @@ function toggleDisable() {
         infoParagraphe.innerHTML = texteAjd;
     }
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const buttonAjd = document.querySelector('.infoButtonAjd');
+    const buttonDemain = document.querySelector('.infoButtonDem');
+    const infoParagraphe = document.querySelector('.infoParagraphe');
 
-buttonAjd.addEventListener('click', toggleDisable);
-buttonDemain.addEventListener('click', toggleDisable);
+    const texteAjd = `Le texte législatif, qui est entré en séance publique à l'Assemblée nationale ce <span class="green">mardi 30 avril 2024</span>, impose de nouveaux quotas d'achat de véhicules électriques pour les entreprises : 30% de voitures électriques dès 2025, 40% en 2026, 50% en 2027, et 95% en 2032.`;
+
+    const texteDemain = 'La loi d’orientation des mobilités du <span class="green">26 décembre 2019</span> impose aux concessionnaires d’autoroutes l’installation de bornes de recharge rapides pour véhicules électriques sur toutes les aires de service.';
+
+    function toggleDisable() {
+        buttonAjd.classList.toggle('infoButtonDisable');
+        buttonDemain.classList.toggle('infoButtonDisable');
+
+        const dotAjd = buttonAjd.querySelector('.dot');
+        const dotDemain = buttonDemain.querySelector('.dot');
+        const infoTextAjd = buttonAjd.querySelector('.infoText');
+        const infoTextDemain = buttonDemain.querySelector('.infoText');
+
+        dotAjd.classList.toggle('dotDisable');
+        dotDemain.classList.toggle('dotDisable');
+
+        infoTextAjd.classList.toggle('infoTextDisable');
+        infoTextDemain.classList.toggle('infoTextDisable');
+
+        if (buttonAjd.classList.contains('infoButtonDisable')) {
+            infoParagraphe.innerHTML = texteDemain;
+        } else {
+            infoParagraphe.innerHTML = texteAjd;
+        }
+    }
+
+    buttonAjd.addEventListener('click', toggleDisable);
+    buttonDemain.addEventListener('click', toggleDisable);
+})
