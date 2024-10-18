@@ -155,29 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 );
             })
             .catch(error => console.error('Error loading JSON:', error));
-
-        gsap.from("#title", {
-            scrollTrigger: {
-                trigger: "#title",
-                start: "top 30%",
-                toggleActions: "play none none reverse"
-            },
-            opacity: 0,
-            y: 20,
-            duration: 2
-        });
-
-        // Optionnel : Animation d'apparition pour le titre
-        gsap.from("#title", {
-            scrollTrigger: {
-                trigger: "#title",
-                start: "top 95%",
-                toggleActions: "play none none reverse"
-            },
-            opacity: 0,
-            y: 20,
-            duration: 1
-        });
     }
 
     initAnimations();
@@ -624,6 +601,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initChart();
     initGlobe();
 
+    // animation scroll
+
     gsap.utils.toArray('.data-1-count').forEach((data, index) => {
         gsap.from(data, {
             scrollTrigger: {
@@ -638,6 +617,75 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 1
         });
     });
+
+    // Appliquer l'animation sur l'élément #title
+    gsap.from('#title', {
+        scrollTrigger: {
+            trigger: '#title',
+            start: "top 30%",  // Commence à 80% de la hauteur de la fenêtre
+            end: "top 5%",    // Se termine à 20% de la hauteur
+            scrub: true,       // Synchronise l'animation avec le scroll
+            toggleActions: "play none none reverse"  // Animation au scroll avant/arrière
+        },
+        x: -100,     // Déplacement horizontal de -100px
+        opacity: 0,  // Démarre à 0 d'opacité
+        duration: 1  // Durée de 1 seconde (même si `scrub` ajuste en fonction du scroll)
+    });
+
+    // Cibler tous les éléments avec la classe .storyContainer et appliquer l'animation séquentiellement
+    gsap.utils.toArray('#histoire1').forEach((story, index) => {
+        gsap.from(story, {
+            scrollTrigger: {
+                trigger: '.storyContainer',
+                start: "top 80%",   // Commence à 80% de la hauteur de la fenêtre
+                end: "top 5%",      // Se termine à 5% de la hauteur
+                scrub: true,        // Synchronise l'animation avec le scroll
+                toggleActions: "play none none reverse"
+            },
+            x: -100,      // Déplacement horizontal de -100px
+            opacity: 0,   // Démarre avec une opacité de 0
+            duration: 1,  // Durée de 1 seconde pour chaque élément
+            delay: index * 0.3  // Décalage progressif pour chaque élément (ajuste la valeur selon tes besoins)
+        });
+    });
+
+    gsap.utils.toArray('#histoire2').forEach((story, index) => {
+        gsap.from(story, {
+            scrollTrigger: {
+                trigger: '.storyContainer',
+                start: "top 30%",   // Commence à 80% de la hauteur de la fenêtre
+                end: "top 5%",      // Se termine à 5% de la hauteur
+                scrub: true,        // Synchronise l'animation avec le scroll
+                toggleActions: "play none none reverse"
+            },
+            x: -100,      // Déplacement horizontal de -100px
+            opacity: 0,   // Démarre avec une opacité de 0
+            duration: 1,  // Durée de 1 seconde pour chaque élément
+            delay: index * 0.3  // Décalage progressif pour chaque élément (ajuste la valeur selon tes besoins)
+        });
+    });
+
+
+
+
+// Cacher le bouton "Retour en haut" (hdp) jusqu'à la fin de la page
+    gsap.to('#hdp', {
+        scrollTrigger: {
+            trigger: document.body,       // Le body entier pour détecter le scroll total
+            start: "top top",             // Le scroll commence dès le début de la page
+            end: "bottom bottom",         // Le scroll s'arrête à la fin de la page
+            scrub: true,                  // Synchroniser avec le scroll
+            toggleActions: "play none none reverse",
+            onUpdate: (self) => {
+                // Si on est en bas de la page, afficher le bouton
+                let isAtBottom = (self.progress > 0.95); // 0.95 est ajustable, représente le bas de la page
+                gsap.to('#hdp', { opacity: isAtBottom ? 1 : 0, duration: 0.5 });
+            }
+        },
+        opacity: 0,  // Initialement caché
+        duration: 20
+    });
+
 
     document.querySelectorAll('.storyButton').forEach(button => {
         button.addEventListener('click', () => {
@@ -744,4 +792,46 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Slider pour changer les images par rapport à l'année
+const slider = document.getElementById('yearSlider');
+const mapImage = document.getElementById('mapImage');
+const currentYearDisplay = document.getElementById('currentYearDisplay');
 
+slider.addEventListener('input', () => {
+    const selectedYear = slider.value;
+    mapImage.src = `/assets/img/carteAuto${selectedYear}.png`;
+    currentYearDisplay.textContent = selectedYear; // Mettre à jour l'affichage de l'année
+});
+
+const buttonAjd = document.querySelector('.infoButtonAjd');
+const buttonDemain = document.querySelector('.infoButtonDem');
+const infoParagraphe = document.querySelector('.infoParagraphe');
+
+const texteAjd = `Le texte législatif, qui est entré en séance publique à l'Assemblée nationale ce <span class="green">mardi 30 avril 2024</span>, impose de nouveaux quotas d'achat de véhicules électriques pour les entreprises : 30% de voitures électriques dès 2025, 40% en 2026, 50% en 2027, et 95% en 2032.`;
+
+const texteDemain = 'La loi d’orientation des mobilités du <span class="green">26 décembre 2019</span> impose aux concessionnaires d’autoroutes l’installation de bornes de recharge rapides pour véhicules électriques sur toutes les aires de service.';
+
+function toggleDisable() {
+    buttonAjd.classList.toggle('infoButtonDisable');
+    buttonDemain.classList.toggle('infoButtonDisable');
+
+    const dotAjd = buttonAjd.querySelector('.dot');
+    const dotDemain = buttonDemain.querySelector('.dot');
+    const infoTextAjd = buttonAjd.querySelector('.infoText');
+    const infoTextDemain = buttonDemain.querySelector('.infoText');
+
+    dotAjd.classList.toggle('dotDisable');
+    dotDemain.classList.toggle('dotDisable');
+
+    infoTextAjd.classList.toggle('infoTextDisable');
+    infoTextDemain.classList.toggle('infoTextDisable');
+
+    if (buttonAjd.classList.contains('infoButtonDisable')) {
+        infoParagraphe.innerHTML = texteDemain;
+    } else {
+        infoParagraphe.innerHTML = texteAjd;
+    }
+}
+
+buttonAjd.addEventListener('click', toggleDisable);
+buttonDemain.addEventListener('click', toggleDisable);

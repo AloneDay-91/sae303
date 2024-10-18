@@ -374,17 +374,11 @@ h2{
 }
 
 .data3 {
-    background-image: url("assets/img/background.svg"); /* Image de fond */
-    background-size: cover; /* Taille de l'image */
-    background-position: center; /* Position de l'image */
-    background-repeat: no-repeat; /* Répétition de l'image */
     width: 100%; /* Largeur de la section */
-    height: 100vh; /* Hauteur de la section */
     display: flex; /* Flexbox pour un meilleur alignement */
     justify-content: center; /* Centrer horizontalement */
     align-items: center; /* Centrer verticalement */
     color: white; /* Couleur du texte */
-    display: none;
 }
 
 .data4 {
@@ -1123,4 +1117,185 @@ html.lenis, html.lenis body {
 
 #btnSwitchData{
     display: none !important;
+}
+
+.blanc div {
+    background: #ffffff;
+    width: 60px;
+    height: 25px;
+    border-radius: 10px;
+}
+
+.rouge div {
+    background: #a13d4e;
+    width: 60px;
+    height: 25px;
+    border-radius: 10px;
+}
+
+.rouge-orange div {
+    background: #af6958;
+    width: 60px;
+    height: 25px;
+    border-radius: 10px;
+}
+
+.orange-clair div {
+    background: #e0a470;
+    width: 60px;
+    height: 25px;
+    border-radius: 10px;
+}
+
+.vert-foret div {
+    background: #a4b462;
+    width: 60px;
+    height: 25px;
+    border-radius: 10px;
+}
+
+.vert-clair div {
+    background: #bfd981;
+    width: 60px;
+    height: 25px;
+    border-radius: 10px;
+}
+
+.border-bleu div {
+    border: 3px solid #447da6;
+    background: white;
+    width: 60px;
+    height: 25px;
+    border-radius: 10px;
+}
+
+
+
+.block-legende-map {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.legende-map {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/*********** Baseline, reset styles ***********/
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 25rem;
+}
+
+/* Removes default focus */
+input[type="range"]:focus {
+    outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #568e11;
+    border-radius: 0.5rem;
+    height: 1rem;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -12px; /* Centers thumb on the track */
+    background-color: #90ff00;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+    outline: 3px solid #90ff00;
+    outline-offset: 0.125rem;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+    background-color: #568e11;
+    border-radius: 0.5rem;
+    height: 1rem;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+    background-color: #90ff00;
+    border: none; /*Removes extra border that FF applies*/
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+input[type="range"]:focus::-moz-range-thumb{
+    outline: 3px solid #90ff00;
+    outline-offset: 0.125rem;
+}
+
+#yearSlider {
+    width: 560px; /* Largeur du slider */
+    height: 500px; /* Hauteur du slider */
+    margin-left: 20px; /* Espace entre le slider et le texte de l'année */
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: rotate(90deg);
+    margin-right: -275px;
+}
+
+.year-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#currentYearDisplay {
+    font-size: 24px; /* Taille du texte de l'année */
+    margin-bottom: 10px; /* Espace entre l'année et le slider */
+}
+
+.data3-bg {
+    background: rgba(105, 105, 105, 25%);
+    width: 100%;
+    border-radius: 20px;
+    margin: 0 50px;
+    position: relative;
+}
+
+.content-data3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 50px;
+}
+
+.data3-map {
+    width: 100%;
+}
+
+.data3-map img {
+    width: 100%;
+}
+
+.data3-texte {
+    width: 100%;
+    padding: 20px;
+}
+
+.data3-texte h3 {
+    margin: 20px 0 20px 0 !important;
 }

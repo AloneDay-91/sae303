@@ -340,10 +340,34 @@ backdrop-filter: blur(27px); padding: 10px; border-radius: 30px; display: flex; 
                 <div class="data3-texte">
                     <h3>Nombre <span class="bold-green-title">d’aires d’autoroutes</span> équipées par des bornes électriques</h3>
                     <p>La <span class="bold-green-title">loi d’orientation</span> des mobilités du 26 décembre 2019 impose aux concessionnaires d’autoroutes l’installation de bornes de recharge rapides pour véhicules électriques sur toutes les aires d’autoroute.</p>
-                    <div>
-                        <div>
-                            <div>couleur blanc</div>
+                    <div class="block-legende-map">
+                        <div class="legende-map blanc">
+                            <div></div>
                             <span>Aucune aire équipée</span>
+                        </div>
+                        <div class="legende-map rouge">
+                            <div></div>
+                            <span>Moins de 20%</span>
+                        </div>
+                        <div class="legende-map rouge-orange">
+                            <div></div>
+                            <span>Entre 21% et 40%</span>
+                        </div>
+                        <div class="legende-map orange-clair">
+                            <div></div>
+                            <span>Entre 41% et 60%</span>
+                        </div>
+                        <div class="legende-map vert-foret">
+                            <div></div>
+                            <span>Entre 61% et 80%</span>
+                        </div>
+                        <div class="legende-map vert-clair">
+                            <div></div>
+                            <span>Entre 81% et 100%</span>
+                        </div>
+                        <div class="legende-map border-bleu">
+                            <div></div>
+                            <span>Routes nationales</span>
                         </div>
                     </div>
                 </div>
@@ -351,90 +375,13 @@ backdrop-filter: blur(27px); padding: 10px; border-radius: 30px; display: flex; 
                     <img id="mapImage" src="/assets/img/carteAuto2020.png" alt="Carte des aires d’autoroutes 2020">
                 </div>
             </div>
-            <div id="data3-bar"></div>
+            <div class="year-display">
+                <span>Mars</span>
+                <span id="currentYearDisplay">2020</span>
+                <input type="range" id="yearSlider" min="2020" max="2024" value="2020">
+            </div>
         </div>
     </div>
-
-    <style>
-        .data3-bg {
-            background: rgba(105, 105, 105, 25%);
-            width: 100%;
-            border-radius: 20px;
-            max-width: 1200px;
-            height: 80vh;
-            position: relative;
-            z-index: 1; /* Pour s'assurer que l'élément est au-dessus des autres éléments */
-        }
-
-        .content-data3 {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 20px;
-            gap: 50px;
-        }
-
-        .data3-map {
-            width: 100%;
-        }
-
-        .data3-map img {
-            width: 100%;
-        }
-
-        .data3-texte {
-            width: 100%;
-            padding: 20px;
-        }
-
-        #data3-bar {
-            width: 40px;
-            max-width: 1200px;
-            height: 800px;
-            background: rgba(105, 105, 105, 25%);
-            border-radius: 20px;
-            position: absolute;
-            right: 0;
-            top: 0;
-            margin-top: -30px;
-        }
-    </style>
-
-    <script>
-
-        // Fonction de mise à jour de la carte
-        function updateMap(year) {
-            const mapImage = document.getElementById('mapImage');
-            const newSrc = `/assets/img/carteAuto${year}.png`;
-
-            // Transition d'image avec GSAP
-            gsap.to(mapImage, {
-                opacity: 0,
-                duration: 0.5,
-                onComplete: () => {
-                    mapImage.src = newSrc;
-                    mapImage.alt = `Carte des aires d’autoroutes ${year}`;
-                    gsap.to(mapImage, { opacity: 1, duration: 0.5 });
-                }
-            });
-        }
-
-        // Liste des années
-        const years = [2020, 2021, 2022, 2023, 2024];
-
-        // ScrollTrigger pour changer d'image à chaque étape du scroll
-        years.forEach((year, index) => {
-            ScrollTrigger.create({
-                trigger: ".orange", // Sélectionner la section contenant la carte
-                start: `top+=${index * 100}% top`, // Début pour chaque année
-                end: `+=100%`, // Chaque année prend 100% de la hauteur de l'écran
-                onEnter: () => updateMap(year), // Appelle la fonction de changement d'image
-                scrub: true, // Activer le scrubbing pour une animation fluide
-            });
-        });
-    </script>
-
-
     <div id="data4" class="data4">
         <div class="block-data4">
             <div class="block-data4-chart1">
@@ -556,40 +503,6 @@ backdrop-filter: blur(27px); padding: 10px; border-radius: 30px; display: flex; 
         <iframe src="https://api.mapbox.com/styles/v1/aloneday-91/cm1rthncw00z601pi9k3i3yp7.html?title=false&access_token=pk.eyJ1IjoiYWxvbmVkYXktOTEiLCJhIjoiY20xcnRmcnI2MGVjajJtczlwbWN3cDBpMiJ9.J9vvQyBfq33b_gRuga8qrQ&zoomwheel=false#5.17/46.886/2.413" title="Untitled" style="border:none;"></iframe>
     </div>
 </div>
-    <script>
-        const buttonAjd = document.querySelector('.infoButtonAjd');
-        const buttonDemain = document.querySelector('.infoButtonDem');
-        const infoParagraphe = document.querySelector('.infoParagraphe');
-
-        const texteAjd = `Le texte législatif, qui est entré en séance publique à l'Assemblée nationale ce <span class="green">mardi 30 avril 2024</span>, impose de nouveaux quotas d'achat de véhicules électriques pour les entreprises : 30% de voitures électriques dès 2025, 40% en 2026, 50% en 2027, et 95% en 2032.`;
-
-        const texteDemain = 'La loi d’orientation des mobilités du <span class="green">26 décembre 2019</span> impose aux concessionnaires d’autoroutes l’installation de bornes de recharge rapides pour véhicules électriques sur toutes les aires de service.';
-
-        function toggleDisable() {
-            buttonAjd.classList.toggle('infoButtonDisable');
-            buttonDemain.classList.toggle('infoButtonDisable');
-
-            const dotAjd = buttonAjd.querySelector('.dot');
-            const dotDemain = buttonDemain.querySelector('.dot');
-            const infoTextAjd = buttonAjd.querySelector('.infoText');
-            const infoTextDemain = buttonDemain.querySelector('.infoText');
-
-            dotAjd.classList.toggle('dotDisable');
-            dotDemain.classList.toggle('dotDisable');
-
-            infoTextAjd.classList.toggle('infoTextDisable');
-            infoTextDemain.classList.toggle('infoTextDisable');
-
-            if (buttonAjd.classList.contains('infoButtonDisable')) {
-                infoParagraphe.innerHTML = texteDemain;
-            } else {
-                infoParagraphe.innerHTML = texteAjd;
-            }
-        }
-
-        buttonAjd.addEventListener('click', toggleDisable);
-        buttonDemain.addEventListener('click', toggleDisable);
-    </script>
 
 <?php
 require_once 'components/footer.php';
