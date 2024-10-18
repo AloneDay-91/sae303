@@ -657,3 +657,91 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Ajoutez ici votre code JavaScript, y compris fetch et addEventListener
+
+    let stations = [];
+
+    // Charger le fichier JSON avec fetch
+    fetch('/assets/datas/pointChargeMap.json')
+        .then(response => response.json())
+        .then(data => {
+            stations = data;  // On stocke les données JSON dans la variable stations
+        })
+        .catch(error => {
+            console.error("Erreur lors du chargement du fichier JSON :", error);
+        });
+
+    // Fonction pour extraire la ville à partir de l'adresse
+    function extraireVille(adresse) {
+        const regex = /\d{5}\s(.+)/;
+        const match = adresse.match(regex);
+        return match ? match[1] : '';
+    }
+
+    // Fonction de filtrage
+    function filtrerStations(searchTerm) {
+        const ville = searchTerm.trim().toLowerCase();
+        return stations.filter(station => {
+            const villeStation = extraireVille(station.adresse_station).toLowerCase();
+            return villeStation.includes(ville);
+        });
+    }
+
+    // Fonction pour afficher les résultats
+    function afficherStations(stations) {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = ''; // On vide les résultats précédents
+
+        const stationsAAfficher = stations.slice(0, 4);
+
+        stationsAAfficher.forEach(station => {
+            const stationDiv = document.createElement('div');
+            stationDiv.classList.add('station');
+            stationDiv.innerHTML = `
+                <p class="stationTitle">${station.nom_station}</p>
+                <p>Adresse : ${station.adresse_station}</p>
+                <div class="stationStats">
+                <div class="stationPuissance">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none">
+                        <path d="M4.8 0C4.95913 0 5.11174 0.0632141 5.22426 0.175736C5.33679 0.288258 5.4 0.44087 5.4 0.6V3.6H9V0.6C9 0.44087 9.06321 0.288258 9.17574 0.175736C9.28826 0.0632141 9.44087 0 9.6 0C9.75913 0 9.91174 0.0632141 10.0243 0.175736C10.1368 0.288258 10.2 0.44087 10.2 0.6V3.6H11.4C11.5591 3.6 11.7117 3.66321 11.8243 3.77574C11.9368 3.88826 12 4.04087 12 4.2V7.8C12 8.91391 11.5575 9.98219 10.7698 10.7698C9.9822 11.5575 8.91391 12 7.8 12C7.7976 12.5208 7.788 13.014 7.752 13.464C7.7028 14.0808 7.6008 14.6676 7.3716 15.1728C7.13949 15.7073 6.7277 16.1437 6.2076 16.4064C5.67 16.68 5.0028 16.8 4.2 16.8C3.0024 16.8 2.268 17.196 1.8312 17.6616C1.43663 18.0779 1.21156 18.6265 1.2 19.2H0C0 18.4608 0.2784 17.5596 0.9564 16.8384C1.6488 16.104 2.7132 15.6 4.2 15.6C4.8972 15.6 5.3544 15.4944 5.6616 15.3372C5.9508 15.1896 6.1416 14.9772 6.2784 14.6772C6.4236 14.358 6.51 13.932 6.5544 13.3692C6.5868 12.9612 6.5964 12.5076 6.5988 12C5.4851 11.9997 4.41712 11.557 3.62973 10.7694C2.84233 9.9818 2.4 8.9137 2.4 7.8V4.2C2.4 4.04087 2.46321 3.88826 2.57574 3.77574C2.68826 3.66321 2.84087 3.6 3 3.6H4.2V0.6C4.2 0.44087 4.26321 0.288258 4.37574 0.175736C4.48826 0.0632141 4.64087 0 4.8 0ZM3.6 4.8V7.8C3.6 8.59565 3.91607 9.35871 4.47868 9.92132C5.04129 10.4839 5.80435 10.8 6.6 10.8H7.8C8.59565 10.8 9.35871 10.4839 9.92132 9.92132C10.4839 9.35871 10.8 8.59565 10.8 7.8V4.8H3.6Z" fill="#90FF00"/>
+                    </svg>
+                    <div class="stationPuissanceTitle">
+                    <span>Nombres de bornes</span>
+                    <p>${station.puissance_nominale} disponible(s)</p>
+                    </div>
+                </div>
+                <div class="stationPuissance">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="16" viewBox="0 0 23 16" fill="none">
+                      <path d="M13.7784 0.0989252C13.9189 0.180705 14.0274 0.30766 14.0864 0.459079C14.1454 0.610498 14.1514 0.777442 14.1033 0.932675L12.4732 6.22843H15.3338C15.4742 6.22837 15.6115 6.26942 15.7288 6.34652C15.8461 6.42361 15.9383 6.53337 15.994 6.66225C16.0496 6.79113 16.0663 6.93348 16.042 7.07174C16.0176 7.20999 15.9534 7.3381 15.8571 7.44024L8.18944 15.5866C8.07817 15.7049 7.93009 15.782 7.76936 15.8054C7.60863 15.8288 7.44471 15.7971 7.30433 15.7154C7.16394 15.6337 7.05537 15.5068 6.9963 15.3555C6.93723 15.2042 6.93116 15.0374 6.97906 14.8822L8.61062 9.58499H5.75C5.60962 9.58504 5.4723 9.54399 5.35498 9.4669C5.23767 9.3898 5.1455 9.28004 5.08985 9.15116C5.0342 9.02228 5.01751 8.87993 5.04184 8.74168C5.06617 8.60342 5.13045 8.47532 5.22675 8.37318L12.8929 0.226863C13.0042 0.108357 13.1523 0.0310484 13.3131 0.00755189C13.4739 -0.0159446 13.638 0.0157583 13.7784 0.0974875V0.0989252Z" fill="#90FF00"/>
+                      <path d="M2.875 2.15743H9.10225L7.751 3.59493H2.875C2.49375 3.59493 2.12812 3.74638 1.85853 4.01596C1.58895 4.28554 1.4375 4.65118 1.4375 5.03243V10.7824C1.4375 11.1637 1.58895 11.5293 1.85853 11.7989C2.12812 12.0685 2.49375 12.2199 2.875 12.2199H6.29625L5.8535 13.6574H2.875C2.1125 13.6574 1.38124 13.3545 0.842068 12.8154C0.302901 12.2762 0 11.5449 0 10.7824V5.03243C0 4.26993 0.302901 3.53866 0.842068 2.99949C1.38124 2.46033 2.1125 2.15743 2.875 2.15743Z" fill="#90FF00"/>
+                      <path d="M2.875 5.03243H6.39687L4.18025 7.38849C3.9515 7.63163 3.78233 7.92457 3.68606 8.24423C3.5898 8.56388 3.56907 8.90152 3.62551 9.23055C3.68195 9.55958 3.81402 9.87101 4.01131 10.1403C4.20861 10.4096 4.46573 10.6294 4.76244 10.7824H2.875V5.03243ZM15.2303 2.15743L14.7876 3.59493H17.25C17.6312 3.59493 17.9969 3.74638 18.2665 4.01596C18.536 4.28554 18.6875 4.65118 18.6875 5.03243V10.7824C18.6875 11.1637 18.536 11.5293 18.2665 11.7989C17.9969 12.0685 17.6312 12.2199 17.25 12.2199H13.3343L11.9801 13.6574H17.25C18.0125 13.6574 18.7438 13.3545 19.2829 12.8154C19.8221 12.2762 20.125 11.5449 20.125 10.7824V5.03243C20.125 4.26993 19.8221 3.53866 19.2829 2.99949C18.7438 2.46033 18.0125 2.15743 17.25 2.15743H15.2303Z" fill="#90FF00"/>
+                      <path d="M17.25 10.7824H14.6869L16.9036 8.42636C17.0435 8.27686 17.159 8.11395 17.25 7.93761V10.7824ZM17.25 5.96105V5.03243H16.3214C16.7199 5.23788 17.0445 5.56248 17.25 5.96105ZM23 7.90743C23 8.4793 22.7728 9.02775 22.3685 9.43213C21.9641 9.8365 21.4156 10.0637 20.8438 10.0637V5.75118C21.4156 5.75118 21.9641 5.97835 22.3685 6.38273C22.7728 6.7871 23 7.33555 23 7.90743Z" fill="#90FF00"/>
+                    </svg>
+                    <div class="stationPuissanceTitle">
+                    <span>Puissance</span>
+                    <p>max ${station.puissance_nominale} kW</p>
+                    </div>
+                </div>
+                </div>
+            `;
+            resultsDiv.appendChild(stationDiv);
+        });
+    }
+
+    // Fonction pour gérer la recherche en temps réel
+    document.getElementById('searchInput').addEventListener('input', (event) => {
+        const searchTerm = event.target.value;
+        const filteredStations = filtrerStations(searchTerm);
+        afficherStations(filteredStations);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.landing-button').addEventListener('click', function() {
+        document.getElementById('title').scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+
