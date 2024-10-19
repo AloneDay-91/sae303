@@ -374,11 +374,15 @@ h2{
 }
 
 .data3 {
-    width: 100%; /* Largeur de la section */
     display: flex; /* Flexbox pour un meilleur alignement */
     justify-content: center; /* Centrer horizontalement */
     align-items: center; /* Centrer verticalement */
     color: white; /* Couleur du texte */
+    background-image: url("/assets/img/background.svg"); /* Image de fond */
+    background-size: cover; /* Taille de l'image */
+    background-position: center; /* Position de l'image */
+    background-repeat: no-repeat; /* Répétition de l'image */
+    padding: 0 80px;
 }
 
 .data4 {
@@ -1268,10 +1272,6 @@ input[type="range"]:focus::-moz-range-thumb{
 }
 
 .data3-bg {
-    background: rgba(105, 105, 105, 25%);
-    width: 100%;
-    border-radius: 20px;
-    margin: 0 50px;
     position: relative;
 }
 
@@ -1279,12 +1279,11 @@ input[type="range"]:focus::-moz-range-thumb{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px;
-    gap: 50px;
 }
 
 .data3-map {
     width: 100%;
+
 }
 
 .data3-map img {
