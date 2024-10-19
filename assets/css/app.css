@@ -1251,13 +1251,13 @@ input[type="range"]:focus::-moz-range-thumb{
 
 #yearSlider {
     width: 560px; /* Largeur du slider */
-    height: 500px; /* Hauteur du slider */
     margin-left: 20px; /* Espace entre le slider et le texte de l'année */
     position: absolute;
     top: 0;
     right: 0;
     transform: rotate(90deg);
-    margin-right: -275px;
+    margin-right: -300px;
+    margin-top: 300px;
 }
 
 .year-display {
